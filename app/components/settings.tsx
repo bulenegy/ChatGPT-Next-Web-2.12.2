@@ -493,6 +493,7 @@ function SyncItems() {
   return (
     <>
       <List>
+        {/* a5470  云端数据功能 */}
         <ListItem
           title={Locale.Settings.Sync.CloudState}
           subTitle={
@@ -528,7 +529,8 @@ function SyncItems() {
             )}
           </div>
         </ListItem>
-
+        
+        {/* a5470 本地数据导入导出功能 */}
         <ListItem
           title={Locale.Settings.Sync.LocalState}
           subTitle={Locale.Settings.Sync.Overview(stateOverview)}
@@ -679,6 +681,7 @@ export function Settings() {
       </div>
       <div className={styles["settings"]}>
         <List>
+          {/* a5470 头像 */}
           <ListItem title={Locale.Settings.Avatar}>
             <Popover
               onClose={() => setShowEmojiPicker(false)}
@@ -703,6 +706,7 @@ export function Settings() {
             </Popover>
           </ListItem>
 
+          {/* a5470 当前版本/检查更新 */}
           <ListItem
             title={Locale.Settings.Update.Version(currentVersion ?? "unknown")}
             subTitle={
@@ -728,6 +732,7 @@ export function Settings() {
             )}
           </ListItem>
 
+          {/* a5470 发送键 */}
           <ListItem title={Locale.Settings.SendKey}>
             <Select
               value={config.submitKey}
@@ -746,6 +751,7 @@ export function Settings() {
             </Select>
           </ListItem>
 
+          {/* a5470 主题 */}
           <ListItem title={Locale.Settings.Theme}>
             <Select
               value={config.theme}
@@ -763,6 +769,7 @@ export function Settings() {
             </Select>
           </ListItem>
 
+          {/* a5470 Language语言修改 */}
           <ListItem title={Locale.Settings.Lang.Name}>
             <Select
               value={getLang()}
@@ -778,6 +785,7 @@ export function Settings() {
             </Select>
           </ListItem>
 
+          {/* a5470 字体大小 */}
           <ListItem
             title={Locale.Settings.FontSize.Title}
             subTitle={Locale.Settings.FontSize.SubTitle}
@@ -796,7 +804,8 @@ export function Settings() {
               }
             ></InputRange>
           </ListItem>
-
+            
+          {/* a5470 自动生成标题 */}
           <ListItem
             title={Locale.Settings.AutoGenerateTitle.Title}
             subTitle={Locale.Settings.AutoGenerateTitle.SubTitle}
@@ -813,6 +822,7 @@ export function Settings() {
             ></input>
           </ListItem>
 
+          {/* a5470 预览气泡 */}
           <ListItem
             title={Locale.Settings.SendPreviewBubble.Title}
             subTitle={Locale.Settings.SendPreviewBubble.SubTitle}
@@ -833,6 +843,7 @@ export function Settings() {
         <SyncItems />
 
         <List>
+          {/* a5470 面具启动页 */}
           <ListItem
             title={Locale.Settings.Mask.Splash.Title}
             subTitle={Locale.Settings.Mask.Splash.SubTitle}
@@ -849,7 +860,7 @@ export function Settings() {
               }
             ></input>
           </ListItem>
-
+          {/* a5470 隐藏内置面具 */}
           <ListItem
             title={Locale.Settings.Mask.Builtin.Title}
             subTitle={Locale.Settings.Mask.Builtin.SubTitle}
@@ -868,6 +879,7 @@ export function Settings() {
         </List>
 
         <List>
+          {/* a5470 禁用提示词自动补全 */}
           <ListItem
             title={Locale.Settings.Prompt.Disable.Title}
             subTitle={Locale.Settings.Prompt.Disable.SubTitle}
@@ -883,7 +895,7 @@ export function Settings() {
               }
             ></input>
           </ListItem>
-
+          {/* a5470 自定义提示词列表 */}
           <ListItem
             title={Locale.Settings.Prompt.List}
             subTitle={Locale.Settings.Prompt.ListCount(
@@ -900,6 +912,7 @@ export function Settings() {
         </List>
 
         <List id={SlotID.CustomModel}>
+          {/* a5470 访问密码功能 */}
           {showAccessCode && (
             <ListItem
               title={Locale.Settings.Access.AccessCode.Title}
@@ -923,6 +936,7 @@ export function Settings() {
               {
                 // Conditionally render the following ListItem based on clientConfig.isApp
                 !clientConfig?.isApp && ( // only show if isApp is false
+                  // a5470 自定义接口（点选）
                   <ListItem
                     title={Locale.Settings.Access.CustomEndpoint.Title}
                     subTitle={Locale.Settings.Access.CustomEndpoint.SubTitle}
@@ -942,6 +956,7 @@ export function Settings() {
               }
               {accessStore.useCustomConfig && (
                 <>
+                  {/* a5470 模型服务商选择 */}
                   <ListItem
                     title={Locale.Settings.Access.Provider.Title}
                     subTitle={Locale.Settings.Access.Provider.SubTitle}
@@ -963,9 +978,11 @@ export function Settings() {
                       ))}
                     </Select>
                   </ListItem>
-
+                  
+                  {/* a5470 OpenAI模型 */}
                   {accessStore.provider === ServiceProvider.OpenAI && (
                     <>
+                      {/* a5470 接口地址 */}
                       <ListItem
                         title={Locale.Settings.Access.OpenAI.Endpoint.Title}
                         subTitle={
@@ -984,6 +1001,7 @@ export function Settings() {
                           }
                         ></input>
                       </ListItem>
+                      {/* a5470 API key */}
                       <ListItem
                         title={Locale.Settings.Access.OpenAI.ApiKey.Title}
                         subTitle={Locale.Settings.Access.OpenAI.ApiKey.SubTitle}
@@ -1004,8 +1022,10 @@ export function Settings() {
                       </ListItem>
                     </>
                   )}
+                  {/* a5470 Azure模型 */}
                   {accessStore.provider === ServiceProvider.Azure && (
                     <>
+                      {/* a5470 接口地址 */}
                       <ListItem
                         title={Locale.Settings.Access.Azure.Endpoint.Title}
                         subTitle={
@@ -1025,6 +1045,7 @@ export function Settings() {
                           }
                         ></input>
                       </ListItem>
+                      {/* a5470 接口密钥 */}
                       <ListItem
                         title={Locale.Settings.Access.Azure.ApiKey.Title}
                         subTitle={Locale.Settings.Access.Azure.ApiKey.SubTitle}
@@ -1043,6 +1064,7 @@ export function Settings() {
                           }}
                         />
                       </ListItem>
+                      {/* a5470 接口版本 */}
                       <ListItem
                         title={Locale.Settings.Access.Azure.ApiVerion.Title}
                         subTitle={
@@ -1064,8 +1086,10 @@ export function Settings() {
                       </ListItem>
                     </>
                   )}
+                  {/* a5470 Google提供商 */}
                   {accessStore.provider === ServiceProvider.Google && (
                     <>
+                      {/* a5470 终端地址 */}
                       <ListItem
                         title={Locale.Settings.Access.Google.Endpoint.Title}
                         subTitle={
@@ -1085,6 +1109,7 @@ export function Settings() {
                           }
                         ></input>
                       </ListItem>
+                      {/* a5470 API 密钥 */}
                       <ListItem
                         title={Locale.Settings.Access.Google.ApiKey.Title}
                         subTitle={Locale.Settings.Access.Google.ApiKey.SubTitle}
@@ -1103,6 +1128,7 @@ export function Settings() {
                           }}
                         />
                       </ListItem>
+                      {/* a5470 API版本 */}
                       <ListItem
                         title={Locale.Settings.Access.Google.ApiVersion.Title}
                         subTitle={
@@ -1124,8 +1150,10 @@ export function Settings() {
                       </ListItem>
                     </>
                   )}
+                  {/* a5470 Anthropic模型 */}
                   {accessStore.provider === ServiceProvider.Anthropic && (
                     <>
+                      {/* a5470 接口地址 */}
                       <ListItem
                         title={Locale.Settings.Access.Anthropic.Endpoint.Title}
                         subTitle={
@@ -1145,6 +1173,7 @@ export function Settings() {
                           }
                         ></input>
                       </ListItem>
+                      {/* a5470 接口密钥 */}
                       <ListItem
                         title={Locale.Settings.Access.Anthropic.ApiKey.Title}
                         subTitle={
@@ -1166,6 +1195,7 @@ export function Settings() {
                           }}
                         />
                       </ListItem>
+                      {/* a5470 接口版本 */}
                       <ListItem
                         title={Locale.Settings.Access.Anthropic.ApiVerion.Title}
                         subTitle={
@@ -1217,7 +1247,7 @@ export function Settings() {
               )}
             </ListItem>
           ) : null}
-
+          {/* a5470 自定义模型名 */}
           <ListItem
             title={Locale.Settings.Access.CustomModel.Title}
             subTitle={Locale.Settings.Access.CustomModel.SubTitle}
@@ -1235,6 +1265,7 @@ export function Settings() {
           </ListItem>
         </List>
 
+        {/* a5470 模型设置功能 */}
         <List>
           <ModelConfigList
             modelConfig={config.modelConfig}
