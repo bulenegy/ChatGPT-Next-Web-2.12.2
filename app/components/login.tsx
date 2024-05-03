@@ -71,8 +71,16 @@ export function LoginPage() {
           type="text"
           placeholder={Locale.Auth.Input}
           value={accessStore.openaiApiKey}
+          // 旧写法
+          // onChange={(e) => {
+          //   access.updateToken(e.currentTarget.value); 
+          // }}
+          // a5470 新写法
           onChange={(e) => {
-            access.updateToken(e.currentTarget.value);
+            accessStore.update(
+              (access) =>
+                (access.openaiApiKey = e.currentTarget.value),
+            );
           }}
         />
 
