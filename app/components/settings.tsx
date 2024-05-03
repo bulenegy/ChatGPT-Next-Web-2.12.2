@@ -707,7 +707,7 @@ export function Settings() {
           </ListItem>
 
           {/* a5470 当前版本/检查更新 */}
-          <ListItem
+          {/* <ListItem
             title={Locale.Settings.Update.Version(currentVersion ?? "unknown")}
             subTitle={
               checkingUpdate
@@ -730,7 +730,7 @@ export function Settings() {
                 onClick={() => checkUpdate(true)}
               />
             )}
-          </ListItem>
+          </ListItem> */}
 
           {/* a5470 发送键 */}
           <ListItem title={Locale.Settings.SendKey}>
@@ -876,9 +876,7 @@ export function Settings() {
               }
             ></input>
           </ListItem>
-        </List>
-
-        <List>
+        
           {/* a5470 禁用提示词自动补全 */}
           <ListItem
             title={Locale.Settings.Prompt.Disable.Title}
@@ -913,7 +911,7 @@ export function Settings() {
 
         <List id={SlotID.CustomModel}>
           {/* a5470 访问密码功能 */}
-          {showAccessCode && (
+          {/* {showAccessCode && (
             <ListItem
               title={Locale.Settings.Access.AccessCode.Title}
               subTitle={Locale.Settings.Access.AccessCode.SubTitle}
@@ -929,7 +927,7 @@ export function Settings() {
                 }}
               />
             </ListItem>
-          )}
+          )} */}
 
           {!accessStore.hideUserApiKey && (
             <>
@@ -1248,7 +1246,7 @@ export function Settings() {
             </ListItem>
           ) : null}
           {/* a5470 自定义模型名 */}
-          <ListItem
+          {/* <ListItem
             title={Locale.Settings.Access.CustomModel.Title}
             subTitle={Locale.Settings.Access.CustomModel.SubTitle}
           >
@@ -1262,7 +1260,7 @@ export function Settings() {
                 )
               }
             ></input>
-          </ListItem>
+          </ListItem> */}
         </List>
 
         {/* a5470 模型设置功能 */}

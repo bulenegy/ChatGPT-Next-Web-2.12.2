@@ -153,6 +153,7 @@ export function SideBar(props: { className?: string }) {
         transition: isMobileScreen && isIOSMobile ? "none" : undefined,
       }}
     >
+      {/* a5470 首页标题、副标题、Logo */}
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
           NextChat
@@ -166,6 +167,7 @@ export function SideBar(props: { className?: string }) {
       </div>
 
       <div className={styles["sidebar-header-bar"]}>
+        {/* a5470 首页原面具功能 */}
         <IconButton
           icon={<MaskIcon />}
           text={shouldNarrow ? undefined : Locale.Mask.Name}
@@ -179,6 +181,7 @@ export function SideBar(props: { className?: string }) {
           }}
           shadow
         />
+        {/* a5470 首页插件功能 */}
         <IconButton
           icon={<PluginIcon />}
           text={shouldNarrow ? undefined : Locale.Plugin.Name}
@@ -202,6 +205,7 @@ export function SideBar(props: { className?: string }) {
       <div className={styles["sidebar-tail"]}>
         <div className={styles["sidebar-actions"]}>
           <div className={styles["sidebar-action"] + " " + styles.mobile}>
+            {/* a5470 首页删除对话记录功能，仅移动网页有 */}
             <IconButton
               icon={<DeleteIcon />}
               onClick={async () => {
@@ -212,6 +216,7 @@ export function SideBar(props: { className?: string }) {
             />
           </div>
           <div className={styles["sidebar-action"]}>
+            {/* a5470 首页设置按钮功能 */}
             <Link to={Path.Settings}>
               <IconButton icon={<SettingsIcon />} shadow />
             </Link>
@@ -223,6 +228,7 @@ export function SideBar(props: { className?: string }) {
           </div>
         </div>
         <div>
+          {/* a5470 首页新的聊天功能 */}
           <IconButton
             icon={<AddIcon />}
             text={shouldNarrow ? undefined : Locale.Home.NewChat}
