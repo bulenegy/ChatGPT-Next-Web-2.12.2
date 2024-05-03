@@ -498,9 +498,8 @@ function SyncItems() {
           title={Locale.Settings.Sync.CloudState}
           subTitle={
             syncStore.lastProvider
-              ? `${new Date(syncStore.lastSyncTime).toLocaleString()} [${
-                  syncStore.lastProvider
-                }]`
+              ? `${new Date(syncStore.lastSyncTime).toLocaleString()} [${syncStore.lastProvider
+              }]`
               : Locale.Settings.Sync.NotSyncYet
           }
         >
@@ -529,7 +528,7 @@ function SyncItems() {
             )}
           </div>
         </ListItem>
-        
+
         {/* a5470 本地数据导入导出功能 */}
         <ListItem
           title={Locale.Settings.Sync.LocalState}
@@ -804,7 +803,7 @@ export function Settings() {
               }
             ></InputRange>
           </ListItem>
-            
+
           {/* a5470 自动生成标题 */}
           <ListItem
             title={Locale.Settings.AutoGenerateTitle.Title}
@@ -854,8 +853,8 @@ export function Settings() {
               onChange={(e) =>
                 updateConfig(
                   (config) =>
-                    (config.dontShowMaskSplashScreen =
-                      !e.currentTarget.checked),
+                  (config.dontShowMaskSplashScreen =
+                    !e.currentTarget.checked),
                 )
               }
             ></input>
@@ -876,7 +875,7 @@ export function Settings() {
               }
             ></input>
           </ListItem>
-        
+
           {/* a5470 禁用提示词自动补全 */}
           <ListItem
             title={Locale.Settings.Prompt.Disable.Title}
@@ -910,6 +909,25 @@ export function Settings() {
         </List>
 
         <List id={SlotID.CustomModel}>
+          {/* a5470 将API key单独拿出 */}
+          <ListItem
+            title={Locale.Settings.Access.OpenAI.ApiKey.Title}
+            subTitle={Locale.Settings.Access.OpenAI.ApiKey.SubTitle}
+          >
+            <PasswordInput
+              value={accessStore.openaiApiKey}
+              type="text"
+              placeholder={
+                Locale.Settings.Access.OpenAI.ApiKey.Placeholder
+              }
+              onChange={(e) => {
+                accessStore.update(
+                  (access) =>
+                    (access.openaiApiKey = e.currentTarget.value),
+                );
+              }}
+            />
+          </ListItem>
           {/* a5470 访问密码功能 */}
           {/* {showAccessCode && (
             <ListItem
@@ -964,8 +982,8 @@ export function Settings() {
                       onChange={(e) => {
                         accessStore.update(
                           (access) =>
-                            (access.provider = e.target
-                              .value as ServiceProvider),
+                          (access.provider = e.target
+                            .value as ServiceProvider),
                         );
                       }}
                     >
@@ -976,7 +994,7 @@ export function Settings() {
                       ))}
                     </Select>
                   </ListItem>
-                  
+
                   {/* a5470 OpenAI模型 */}
                   {accessStore.provider === ServiceProvider.OpenAI && (
                     <>
@@ -1076,8 +1094,8 @@ export function Settings() {
                           onChange={(e) =>
                             accessStore.update(
                               (access) =>
-                                (access.azureApiVersion =
-                                  e.currentTarget.value),
+                              (access.azureApiVersion =
+                                e.currentTarget.value),
                             )
                           }
                         ></input>
@@ -1140,8 +1158,8 @@ export function Settings() {
                           onChange={(e) =>
                             accessStore.update(
                               (access) =>
-                                (access.googleApiVersion =
-                                  e.currentTarget.value),
+                              (access.googleApiVersion =
+                                e.currentTarget.value),
                             )
                           }
                         ></input>
@@ -1187,8 +1205,8 @@ export function Settings() {
                           onChange={(e) => {
                             accessStore.update(
                               (access) =>
-                                (access.anthropicApiKey =
-                                  e.currentTarget.value),
+                              (access.anthropicApiKey =
+                                e.currentTarget.value),
                             );
                           }}
                         />
@@ -1207,8 +1225,8 @@ export function Settings() {
                           onChange={(e) =>
                             accessStore.update(
                               (access) =>
-                                (access.anthropicApiVersion =
-                                  e.currentTarget.value),
+                              (access.anthropicApiVersion =
+                                e.currentTarget.value),
                             )
                           }
                         ></input>
@@ -1228,9 +1246,9 @@ export function Settings() {
                   ? loadingUsage
                     ? Locale.Settings.Usage.IsChecking
                     : Locale.Settings.Usage.SubTitle(
-                        usage?.used ?? "[?]",
-                        usage?.subscription ?? "[?]",
-                      )
+                      usage?.used ?? "[?]",
+                      usage?.subscription ?? "[?]",
+                    )
                   : Locale.Settings.Usage.NoAccess
               }
             >
