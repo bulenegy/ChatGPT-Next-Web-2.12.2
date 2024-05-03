@@ -170,10 +170,10 @@ export function SideBar(props: { className?: string }) {
       {/* a5470 首页标题、副标题、Logo */}
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          NextChat
+          ChatGPT
         </div>
         <div className={styles["sidebar-sub-title"]}>
-          Build your own AI assistant.
+          Your AI assistant.
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
@@ -217,7 +217,8 @@ export function SideBar(props: { className?: string }) {
         />
         <IconButton
           icon={<WechatIcon />}
-          text={shouldNarrow ? undefined : Locale.Plugin.Name}
+          text="联系客服"
+          // text={shouldNarrow ? undefined : Locale.Plugin.Name}
           className={styles["sidebar-bar-button"]}
           
           // a5470 联系客服跳转
