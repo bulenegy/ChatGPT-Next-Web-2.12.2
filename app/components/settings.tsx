@@ -856,7 +856,7 @@ export function Settings() {
 
         <List>
           {/* a5470 面具启动页 */}
-          <ListItem
+          {/* <ListItem
             title={Locale.Settings.Mask.Splash.Title}
             subTitle={Locale.Settings.Mask.Splash.SubTitle}
           >
@@ -871,9 +871,9 @@ export function Settings() {
                 )
               }
             ></input>
-          </ListItem>
+          </ListItem> */}
           {/* a5470 隐藏内置面具 */}
-          <ListItem
+          {/* <ListItem
             title={Locale.Settings.Mask.Builtin.Title}
             subTitle={Locale.Settings.Mask.Builtin.SubTitle}
           >
@@ -887,7 +887,7 @@ export function Settings() {
                 )
               }
             ></input>
-          </ListItem>
+          </ListItem> */}
 
           {/* a5470 禁用提示词自动补全 */}
           <ListItem
