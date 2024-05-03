@@ -26,6 +26,9 @@ export enum Path {
   NewChat = "/new-chat",
   Masks = "/masks",
   Auth = "/auth",
+
+  Login = "/login",//a5470 新增页面登录页
+  Web = "/web",//a5470 新增页面web网页浏览
 }
 
 export enum ApiPath {

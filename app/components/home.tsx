@@ -31,6 +31,10 @@ import { ClientApi } from "../client/api";
 import { useAccessStore } from "../store";
 import { identifyDefaultClaudeModel } from "../utils/checkers";
 
+// a5470 新增页面web页面、登录页面
+import { WebPage } from "./web";
+import { LoginPage } from "./login";
+
 export function Loading(props: { noLogo?: boolean }) {
   return (
     <div className={styles["loading-content"] + " no-dark"}>
@@ -160,6 +164,11 @@ function Screen() {
               <Route path={Path.Masks} element={<MaskPage />} />
               <Route path={Path.Chat} element={<Chat />} />
               <Route path={Path.Settings} element={<Settings />} />
+
+               {/* a5470 新增页面登录、网页*/}
+               <Route path={Path.Login} element={<LoginPage />} />
+               <Route path={Path.Web} element={<WebPage />} />
+               <Route path="/web/:url/:main_title/:submai_title" element={<WebPage />} />
             </Routes>
           </div>
         </>
