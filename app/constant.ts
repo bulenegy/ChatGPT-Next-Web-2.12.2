@@ -14,6 +14,11 @@ export const ANTHROPIC_BASE_URL = "https://api.anthropic.com";
 
 export const GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/";
 
+// a5470 新增 学习地址、帮助地址、介绍地址、购买地址
+export const HELP_URL = "https://j.ncre.top//help";
+export const LEARN_URL="https://j.ncre.top/help"
+export const CONTACT_URL="https://j.ncre.top/contact"
+
 export enum Path {
   Home = "/",
   Chat = "/chat",

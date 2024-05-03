@@ -19,6 +19,12 @@ import ConnectionIcon from "../icons/connection.svg";
 import CloudSuccessIcon from "../icons/cloud-success.svg";
 import CloudFailIcon from "../icons/cloud-fail.svg";
 
+
+// a5470 新增
+import BuyIcon from "../icons/buy.svg";
+import LearnIcon from "../icons/learn.svg";
+import { HELP_URL,LEARN_URL} from "../constant";
+
 import {
   Input,
   List,
@@ -655,6 +661,13 @@ export function Settings() {
   const clientConfig = useMemo(() => getClientConfig(), []);
   const showAccessCode = enabledAccessControl && !clientConfig?.isApp;
 
+  //a5470 网页传递地址参数功能
+  // 新增的处理函数，用于设置地址参数并导航到 web.tsx
+  const handleOpenWeb = (url:string, main_title:string, submai_title:string) => {
+    navigate(`/web/${encodeURIComponent(url)}/${encodeURIComponent(main_title)}/${encodeURIComponent(submai_title)}`);
+  };
+  //结束
+
   return (
     <ErrorBoundary>
       <div className="window-header" data-tauri-drag-region>
@@ -909,7 +922,7 @@ export function Settings() {
         </List>
 
         <List id={SlotID.CustomModel}>
-          {/* a5470 将API key单独拿出 */}
+          {/* a5470 新增：将API key单独拿出 */}
           <ListItem
             title={Locale.Settings.Access.OpenAI.ApiKey.Title}
             subTitle={Locale.Settings.Access.OpenAI.ApiKey.SubTitle}
@@ -928,6 +941,36 @@ export function Settings() {
               }}
             />
           </ListItem>
+
+          {/* a5470 新增：付费入口板块 */}
+          <ListItem
+            title="购买API key"
+            subTitle="点击右侧按钮购买API key"
+          >
+
+            <IconButton
+              icon={<BuyIcon></BuyIcon>}
+              text="点击购买"
+              // onClick={() => window.location.href = 'http://qr05.cn/Cpk5M6'}
+              // onClick={() => window.open(HELP_URL, '_blank')}
+              onClick={() => handleOpenWeb(HELP_URL, '购买说明', '购买API key')}
+
+            />
+          </ListItem>
+
+          {/* a5470 新增：学习使用入口 */}
+          <ListItem
+            title="如何使用"
+            subTitle="点击右侧按钮学习ChatGPT使用技巧"
+          >
+            <IconButton
+              icon={<LearnIcon></LearnIcon>}
+              text="学习使用"
+              // onClick={() => window.location.href = 'https://qr05.cn/FQEXFL'}
+              onClick={() => window.open(LEARN_URL, '_blank')}
+            />
+          </ListItem>
+
           {/* a5470 访问密码功能 */}
           {/* {showAccessCode && (
             <ListItem
