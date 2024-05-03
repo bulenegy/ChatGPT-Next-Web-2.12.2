@@ -70,7 +70,7 @@ export function LoginPage() {
           className={styles2["auth-input"]}
           type="text"
           placeholder={Locale.Auth.Input}
-          value={accessStore.token}
+          value={accessStore.openaiApiKe}
           onChange={(e) => {
             access.updateToken(e.currentTarget.value);
           }}

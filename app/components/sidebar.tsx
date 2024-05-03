@@ -15,6 +15,11 @@ import DragIcon from "../icons/drag.svg";
 
 import Locale from "../locales";
 
+// a5470 新增图标登录、微信、帮助（问号）
+import LoginIcon from "../icons/login.svg";
+import HelpIcon from "../icons/help.svg";
+import WechatIcon from "../icons/wechat.svg";
+
 import { useAppConfig, useChatStore } from "../store";
 
 import {
@@ -24,6 +29,8 @@ import {
   NARROW_SIDEBAR_WIDTH,
   Path,
   REPO_URL,
+  CONTACT_URL,
+  HELP_URL, //a5470 新增的联系客服链接
 } from "../constant";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -141,6 +148,13 @@ export function SideBar(props: { className?: string }) {
     [isMobileScreen],
   );
 
+  //a5470 网页传递地址参数功能
+  // 新增的处理函数，用于设置地址参数并导航到 web.tsx
+  const handleOpenWeb = (url:string, main_title:string, submai_title:string) => {
+    navigate(`/web/${encodeURIComponent(url)}/${encodeURIComponent(main_title)}/${encodeURIComponent(submai_title)}`);
+  };
+  //结束
+
   useHotKey();
 
   return (
@@ -168,7 +182,7 @@ export function SideBar(props: { className?: string }) {
 
       <div className={styles["sidebar-header-bar"]}>
         {/* a5470 首页原面具功能 */}
-        <IconButton
+        {/* <IconButton
           icon={<MaskIcon />}
           text={shouldNarrow ? undefined : Locale.Mask.Name}
           className={styles["sidebar-bar-button"]}
@@ -180,13 +194,37 @@ export function SideBar(props: { className?: string }) {
             }
           }}
           shadow
-        />
+        /> */}
+
         {/* a5470 首页插件功能 */}
-        <IconButton
+        {/* <IconButton
           icon={<PluginIcon />}
           text={shouldNarrow ? undefined : Locale.Plugin.Name}
           className={styles["sidebar-bar-button"]}
           onClick={() => showToast(Locale.WIP)}
+          shadow
+        /> */}
+        <IconButton
+        //a5470 原来是面具启动页，现在调整为接入启动
+          icon={<LoginIcon />}
+          text="登录"
+          className={styles["sidebar-bar-button"]}
+          // onClick={() => navigate(Path.NewChat, { state: { fromHome: true } })}
+          // onClick={() => navigate(Path.Auth, { state: { fromHome: true } })}
+
+          onClick={() => navigate(Path.Login  , { state: { fromHome: true } }) }
+          shadow
+        />
+        <IconButton
+          icon={<WechatIcon />}
+          text={shouldNarrow ? undefined : Locale.Plugin.Name}
+          className={styles["sidebar-bar-button"]}
+          
+          // a5470 联系客服跳转
+          // onClick={() => showToast(Locale.WIP)}
+          // onClick={() => window.open(LEARN_URL, '_blank')} 
+          // onClick={() => window.open(CONTACT_URL, '_blank')} 
+          onClick={() => handleOpenWeb(CONTACT_URL, '联系客服', '联系客服')}
           shadow
         />
       </div>
@@ -222,8 +260,12 @@ export function SideBar(props: { className?: string }) {
             </Link>
           </div>
           <div className={styles["sidebar-action"]}>
-            <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
-              <IconButton icon={<GithubIcon />} shadow />
+            {/* a5470 原版github链接 */}
+            {/* <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
+              <IconButton icon={<GithubIcon />} shadow /> */}
+            {/* a5470 修改后 帮助链接 */}
+              <a href={HELP_URL} target="_blank" rel="noopener noreferrer">
+              <IconButton icon={<HelpIcon />} shadow />
             </a>
           </div>
         </div>
