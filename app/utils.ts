@@ -297,9 +297,20 @@ export function isVisionModel(model: string) {
     "vision",
     "claude-3",
     "gemini-1.5-pro",
+    //a5470 2.12.3 新增gpt4o
+    "gpt-4-turbo",
+    "gpt-4o",
   ];
+  const isGpt4TurboPreview = model === "gpt-4-turbo-preview";
 
-  const isGpt4Turbo = model.includes("gpt-4-turbo") && !model.includes("preview");
+  //a5470 2.12.3版删除
+//   const isGpt4Turbo = model.includes("gpt-4-turbo") && !model.includes("preview");
 
-  return visionKeywords.some((keyword) => model.includes(keyword)) || isGpt4Turbo;
+//   return visionKeywords.some((keyword) => model.includes(keyword)) || isGpt4Turbo;
+// }
+  //a5470 2.12.3增加
+    return (
+      visionKeywords.some((keyword) => model.includes(keyword)) &&
+      !isGpt4TurboPreview
+    );
 }

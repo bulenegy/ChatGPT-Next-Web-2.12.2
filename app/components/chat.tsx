@@ -1088,6 +1088,8 @@ function _Chat() {
             if (payload.url) {
               accessStore.update((access) => (access.openaiUrl = payload.url!));
             }
+            //a5470 2.12.3新增
+            accessStore.update((access) => (access.useCustomConfig = true));
           });
         }
       } catch {

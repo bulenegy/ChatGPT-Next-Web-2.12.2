@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
-import { STORAGE_KEY, internalWhiteWebDavEndpoints } from "../../../constant";
+//a5470 2.12.3修改
+//import { STORAGE_KEY, internalWhiteWebDavEndpoints } from "../../../constant";
+import { STORAGE_KEY, internalAllowedWebDavEndpoints } from "../../../constant";
 import { getServerSideConfig } from "@/app/config/server";
 
 const config = getServerSideConfig();
 
-const mergedWhiteWebDavEndpoints = [
-  ...internalWhiteWebDavEndpoints,
-  ...config.whiteWebDevEndpoints,
+//a5470 2.12.3修改
+// const mergedWhiteWebDavEndpoints = [
+//   ...internalWhiteWebDavEndpoints,
+//   ...config.whiteWebDevEndpoints,
+const mergedAllowedWebDavEndpoints = [
+  ...internalAllowedWebDavEndpoints,
+  ...config.allowedWebDevEndpoints,
 ].filter((domain) => Boolean(domain.trim()));
 
 async function handle(
@@ -24,7 +30,11 @@ async function handle(
 
   // Validate the endpoint to prevent potential SSRF attacks
   if (
-    !mergedWhiteWebDavEndpoints.some((white) => endpoint?.startsWith(white))
+    //a5470 2.12.3修改
+    //!mergedWhiteWebDavEndpoints.some((white) => endpoint?.startsWith(white))
+    !mergedAllowedWebDavEndpoints.some(
+      (allowedEndpoint) => endpoint?.startsWith(allowedEndpoint),
+    )
   ) {
     return NextResponse.json(
       {
