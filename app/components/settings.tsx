@@ -1307,7 +1307,7 @@ export function Settings() {
             </ListItem>
           ) : null}
           {/* a5470 自定义模型名 */}
-          {/* <ListItem
+          <ListItem
             title={Locale.Settings.Access.CustomModel.Title}
             subTitle={Locale.Settings.Access.CustomModel.SubTitle}
           >
@@ -1321,7 +1321,7 @@ export function Settings() {
                 )
               }
             ></input>
-          </ListItem> */}
+          </ListItem>
         </List>
 
         {/* a5470 模型设置功能 */}
